@@ -10,12 +10,13 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+    @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "施設を登録しました"
-      redirect_to :users
+      redirect_to :rooms
     else
-      @user = User.find_by(params[:room][:user_id])
-      render "users/show"
+      @room = Room.find_by(params[:id])
+      render "rooms/show"
     end
   end
 

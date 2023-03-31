@@ -6,14 +6,17 @@
     align-items: center;
     padding: 0 20px;
 }
+header a{
+    color :white;
+}
+
+a{
+    text-decoration: none;
+}
 
 .logo{
     font-size: 40px;
     margin: 5px;
-}
-a{
-    text-decoration: none;
-    color: white;
 }
 
 .login_signup{
@@ -24,4 +27,18 @@ a{
 li{
     list-style: none;
     margin: 0 7px;
+}
+
+footer{
+    height: 200px;
+    background-color: #1c1d3b;
+    color: white;
+    padding: 60px 30px;
+}
+
+.footer_logo{
+    font-size: 40px;
+}
+.copyright{
+    font-size: 5px;
 }
