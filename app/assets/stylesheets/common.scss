@@ -1,0 +1,27 @@
+.header{
+    background-color: #1c1d3b;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo{
+    font-size: 40px;
+    margin: 5px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.login_signup{
+    display: flex;
+    margin: 0 0 0 auto;
+}
+
+li{
+    list-style: none;
+    margin: 0 7px;
+}

@@ -11,6 +11,25 @@
   </head>
 
   <body>
+    <header class = "header">
+    <a class = "logo" href = "/">Potepan Share</a>
+    <ul class = "login_signup">
+      <li><a class = "login" href = "/users/sign_in">ログイン</a></li>
+      <li><a class = "signup" href = "/users/sign_up">新規登録</a></li>
+    </ul>
+    </header>
+    <% if flash[:notice] %>
+      <div class = "notice">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class = "alert">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>
