@@ -1,4 +1,4 @@
-<h3>施設一覧</h3>
+<h3>登録済み施設一覧</h3>
 <%= link_to "施設の新規登録" ,[:new_room]%>
     <table>
         <thead>
@@ -15,7 +15,7 @@
             <% @rooms.each do |room| %>
             <tr>
                 <td><%= room.img %></td>
-                <td><%= room.name %></td>
+                <td><%= link_to room.name , room %></td>
                 <td><%= room.introduction %></td>
                 <td><%= room.price %></td>
                 <td><%= room.created_at.to_s(:datetime_jp) %></td>

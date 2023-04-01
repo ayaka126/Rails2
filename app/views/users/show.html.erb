@@ -1,0 +1,10 @@
+<% if user_signed_in? && @user == current_user %>
+    <h1>マイページ</h1>
+<% else %>
+    <h2>ユーザーページ</h2>
+ <% end %>
+ 
+<p>アイコン画像: </p>
+<p>名前: <%= @user.name %></p>
+<p>メールアドレス: <%= @user.email %></p>
+<p>紹介文: <%= @user.introduction %></p>

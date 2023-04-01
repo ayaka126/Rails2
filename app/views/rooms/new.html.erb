@@ -4,6 +4,8 @@
     <p class = "notice"><%= flash[:notice] %></p>
 <% end%>
 
+<%= render "shared/error", obj: @room %>
+
 <%= form_with model: @room do |f| %>
     <table>
         <tr>
