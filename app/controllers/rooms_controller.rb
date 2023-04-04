@@ -15,14 +15,14 @@ class RoomsController < ApplicationController
       flash[:notice] = "施設を登録しました"
       redirect_to :rooms
     else
-      flash.now[:notice] = "施設を登録できませんでした"
-      @room = Room.find_by(params[:user_id])#このへんおかしい
+      flash.now[:alert] = "施設を登録できませんでした"
       render "new"
     end
   end
 
   def show
     @room = Room.find(params[:id])
+    @room.user_id = current_user.id
   end
 
   def edit
@@ -32,9 +32,10 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)
-      flash[:notice] = "投稿を更新しました"
-      redirect_to :users
+      flash[:notice] = "施設情報を更新しました"
+      redirect_to user_url
     else
+      flash.now[:alert] = "施設情報を更新できませんでした"
       render "edit"
     end
   end
@@ -43,11 +44,11 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to :users
+    redirect_to :rooms
   end
 
   private
   def room_params
-    params.require(:room).permit(:name, :introduction, :price, :address, :user_id, :img)
+    params.require(:room).permit(:name, :introduction, :price, :address, :user_id, :img, :img_cache)
   end
 end

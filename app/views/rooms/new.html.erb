@@ -1,4 +1,4 @@
-<h3>新規登録</h3>
+<h3>施設の新規登録</h3>
 
 <% if flash[:notice] %>
     <p class = "notice"><%= flash[:notice] %></p>
@@ -29,7 +29,8 @@
         </tr>
         <tr>
             <th><%= f.label :img ,"施設画像" %></th>
-            <td><%= f.file_field :img %></td>
+            <td><%= f.file_field :img %>
+                <%= f.hidden_field :img_cache %></td>
         </tr>
     </table>
 

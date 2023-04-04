@@ -1,4 +1,5 @@
 class Room < ApplicationRecord
+    mount_uploader :img, ImgUploader
     belongs_to :user
     
     validates :name,presence: true
@@ -6,5 +7,4 @@ class Room < ApplicationRecord
     validates :price,presence: true
     validates :address,presence: true
 
-    mount_uploader :img, ImgUploader
 end

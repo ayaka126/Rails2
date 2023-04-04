@@ -1,0 +1,14 @@
+<h3>予約フォーム</h3>
+
+<%= form_with model: @reservation, method: :post, url: reservations_confirm_url do |f| %>
+	<div class = "reservation">
+		<p><%= f.label :check_in , "チェックイン日" %></p>
+		<p><%= f.date_field :check_in %></p>
+		<p><%= f.label :check_out , "チェックアウト日" %></p>
+		<p><%= f.date_field :check_out %></p>
+		<p><%= f.label :how_many_people , "人数" %></p>
+		<p><%= f.text_field :how_many_people %></p>
+	</div>
+
+	<%= f.submit "確認画面へ" %>
+<% end %>

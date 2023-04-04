@@ -1,0 +1,28 @@
+<h2>予約内容の確認</h2>
+
+<dl>
+	<dt>チェックイン日</dt>
+	<dd><%= @reservation.check_in %></dd>
+	<dt>チェックアウト日</dt>
+	<dd><%= @reservation.check_out %></dd>
+	<dt>人数</dt>
+	<dd><%= @reservation.how_many_people %></dd>
+    <dt>宿泊日数</dt>
+	<dd><%= @reservation.how_many_days %></dd> <!--宿泊日数と金額の計算式-->
+    <dt>支払い金額</dt>
+	<dd><%= @reservation.total_price %></dd>
+</dl>
+
+<%= form_for @reservation, method: :post, url: reservation_back_path do |f| %>
+	<%= f.hidden_field :check_in %>
+	<%= f.hidden_field :check_out %>
+	<%= f.hidden_field :how_many_people %>
+	<%= f.submit '入力画面に戻る' %>
+<% end %>
+
+<%= form_for @reservation, method: :post, url: reservation_complete_path do |f| %>
+	<%= f.hidden_field :check_in %>
+	<%= f.hidden_field :check_out %>
+	<%= f.hidden_field :how_many_people %>
+	<%= f.submit "送信する" %>
+<% end %>

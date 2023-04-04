@@ -14,7 +14,7 @@
         <tbody>
             <% @rooms.each do |room| %>
             <tr>
-                <td><%= room.img %></td>
+                <td><%= image_tag 'default-room-image' %></td>
                 <td><%= link_to room.name , room %></td>
                 <td><%= room.introduction %></td>
                 <td><%= room.price %></td>

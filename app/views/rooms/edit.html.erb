@@ -1,11 +1,11 @@
-<h3>施設詳細</h3>
+<h3>施設の編集</h3>
 
-<% if flash[:notice]%>
+<% if flash[:notice] %>
     <p class = "notice"><%= flash[:notice] %></p>
-<% end %>
+<% end%>
 
-<%= link_to "戻る", :back %>
-<%= link_to "編集", [:edit_room]%>
+<%= render "shared/error", obj: @room %>
+
 <%= form_with model: @room do |f| %>
     <table>
         <tr>
@@ -29,11 +29,13 @@
         </tr>
         <tr>
             <th><%= f.label :img ,"施設画像" %></th>
-            <td><%= f.file_field :img %></td>
+            <td><%= f.file_field :img %>
+                <%= f.hidden_field :img_cache %></td>
         </tr>
     </table>
-    <%= f.hidden_field :room_id, value: @room.id %>
 
-
-    <%= link_to "予約する" , new_reservation_path(room_id: @room.id,user_id: current_user) %>
+    <div class = "buttons">
+        <%= link_to "キャンセル", :rooms %>
+        <%= f.submit "編集を保存する" %>
+    </div>
 <% end %>
