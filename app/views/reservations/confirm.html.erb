@@ -1,4 +1,4 @@
-<h2>予約内容の確認</h2>
+<h3>予約内容の確認</h3>
 
 <dl>
 	<dt>チェックイン日</dt>
@@ -13,14 +13,14 @@
 	<dd><%= @reservation.total_price %></dd>
 </dl>
 
-<%= form_for @reservation, method: :post, url: reservation_back_path do |f| %>
+<%= form_for @reservation, method: :post, url: reservations_back_path do |f| %>
 	<%= f.hidden_field :check_in %>
 	<%= f.hidden_field :check_out %>
 	<%= f.hidden_field :how_many_people %>
-	<%= f.submit '入力画面に戻る' %>
+	<%= f.submit "入力画面に戻る" %>
 <% end %>
 
-<%= form_for @reservation, method: :post, url: reservation_complete_path do |f| %>
+<%= form_for @reservation, method: :post, url: reservations_complete_path do |f| %>
 	<%= f.hidden_field :check_in %>
 	<%= f.hidden_field :check_out %>
 	<%= f.hidden_field :how_many_people %>

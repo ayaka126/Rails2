@@ -32,8 +32,10 @@
             <td><%= f.file_field :img %></td>
         </tr>
     </table>
-    <%= f.hidden_field :room_id, value: @room.id %>
-
+    <div class = "hidden">
+        <% f.hidden_field :user_id, value: @user.id%>
+        <% f.hidden_field :room_id, value: @room.id%>
+    </div>
 
     <%= link_to "予約する" , new_reservation_path(room_id: @room.id,user_id: current_user) %>
 <% end %>

@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @rooms = Room.all
     @users = User.all
@@ -22,7 +24,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @room.user_id = current_user.id
+    @user = @room.user
+    @rooms = Room.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
   def edit
