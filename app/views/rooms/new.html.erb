@@ -9,6 +9,9 @@
 <%= form_with model: @room do |f| %>
     <table>
         <tr>
+            <td><%= f.hidden_field :room_id, value: @room.id %></td>
+        </tr>
+        <tr>
             <th><%= f.label :name ,"施設名" %></th>
             <td><%= f.text_field :name %></td>
         </tr>

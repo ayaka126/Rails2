@@ -2,8 +2,8 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @rooms = Room.all
-    @users = User.all
+    @rooms = Room.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+    @user = current_user.id
   end
 
   def new
@@ -25,7 +25,6 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @user = @room.user
-    @rooms = Room.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
   def edit
@@ -46,12 +45,12 @@ class RoomsController < ApplicationController
   def destroy
     @room = Room.find(params[:id])
     @room.destroy
-    flash[:notice] = "投稿を削除しました"
+    flash.now[:notice] = "施設を削除しました"
     redirect_to :rooms
   end
 
   private
   def room_params
-    params.require(:room).permit(:name, :introduction, :price, :address, :user_id, :img, :img_cache)
+    params.require(:room).permit(:name, :introduction, :price, :address, :user_id, :img, :img_cache, :reservation_id)
   end
 end

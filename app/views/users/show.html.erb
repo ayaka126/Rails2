@@ -5,32 +5,6 @@
  <% end %>
  
 <p>アイコン画像: </p>
-<p>名前: <%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
-<p>紹介文: <%= @user.introduction %></p>
-<p>登録した施設一覧</p>
-    <table>
-        <thead>
-            <tr>
-                <th>画像</th>
-                <th>施設名</th>
-                <th>紹介文</th>
-                <th>料金</th>
-                <th>作成日</th>
-            </tr>
-        </thead>
-    <table>
-        <tbody>
-            <% @rooms.each do |room| %>
-            <tr>
-                <td><%= image_tag 'default-room-image' %></td>
-                <td><%= link_to room.name , room %></td>
-                <td><%= room.introduction %></td>
-                <td><%= room.price %></td>
-                <td><%= room.created_at.to_s(:datetime_jp) %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-<%= link_to "施設の新規登録" ,[:new_room]%>
-
+<p>名前: <%= @current_user.name %></p>
+<p>メールアドレス: <%= @current_user.email %></p>
+<p>紹介文: <%= @current_user.introduction %></p>

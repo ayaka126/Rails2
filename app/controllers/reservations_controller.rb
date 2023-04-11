@@ -1,13 +1,14 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
-    @rooms = Room.all
+    @reservations = Reservation.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+    @room = Room.find(params[:room_id])
   end
   
   def new
-    @reservation = Reservation.new
-    @user = current_user.id
     @room = Room.find(params[:room_id])
+    @reservation = Reservation.new
+    @user = current_user
+
   end
 
   def back
@@ -15,21 +16,16 @@ class ReservationsController < ApplicationController
     render "new"
   end
 
-  def confirm
-    @reservation = Reservation.new(@attr)
-    @reservation.user_id = current_user.id
-    if @reservation.invalid?
-      render "new"
-    end
-  end
-
   def create
-    @reservation = Reservation.new(@attr)
-    @reservation.user_id = current_user.id    
-    if params[:back] || !@reservation.save
-      render "new"
+    @room = Room.find(params[:room_id])
+    @user = current_user
+    @reservation = Reservation.new(reservation_params)
+    if @reservation.save
+      flash[:notice] = "予約が完了しました"
+      redirect_to :room_reservations
     else
-      redirect_to :reservations
+      flash.now[:alert] = "予約できませんでした"
+      render "new"
     end
   end
 
@@ -38,19 +34,22 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(params[:room_id])
+    @reservation = Reservation.find(params[:id])
     @reservation.user_id = current_user.id
+    @rooms = @reservation.rooms.includes(:user)
+    @room =  Room.find(params[:id])
   end
 
   def edit
-    @reservation = Reservation.find(params[:room_id])
+    @room = Room.find(params[:room_id])
+    @reservation = Reservation.find(params[:id])
   end
 
   def update
     @reservation = Reservation.find(params[:room_id])
     if @reservation.update(reservation_params)
       flash[:notice] = "予約を更新しました"
-      redirect_to :reservations
+      redirect_to :room_reservations
     else
       flash.now[:alert] = "予約が更新できませんでした"
       render "edit"
@@ -58,9 +57,10 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation = Reservation.find(params[:room_id])
+    @reservation = Reservation.find_by(room_id:params[:room_id], user_id:current_user.id)
+    @room = @reservation.room
     @reservation.destroy
-    flash[:notice] = "予約を削除しました"
+    flash.now[:notice] = "予約を削除しました"
     redirect_to :reservations
   end
 

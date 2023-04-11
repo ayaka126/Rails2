@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @rooms = @user.rooms
+    @user = current_user.id
+    @room = Room.find(params[:id])
   end
 end

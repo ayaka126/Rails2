@@ -6,21 +6,11 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
   }
   get '/mypage' => 'users#mypage'
-  resources :rooms
-  resources :reservations do
-    member do
-      post 'confirm' => 'reservations#confirm'
-    end
+  resources :rooms do
+    resources :reservations
   end
-  get 'reservations/index'
-  get 'reservations/new' => 'reservations#new'
-  post 'reservations/confirm' => 'reservations#confirm'
-  post 'reservations/back' => 'reservations#back'
-  post 'reservations/complete' => 'reservations#complete'
-
-  resources :users, only: [:new, :create, :show] do
-    member do
-      post :confirm
-    end
-  end
+  post 'rooms/:room_id/reservations' => 'reservations#create'
+  get '/rooms/:room_id/reservations/:id/edit' => 'reservations#edit'
+  delete 'rooms' => 'rooms#destroy'
+  resources :users
 end
