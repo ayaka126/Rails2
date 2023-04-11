@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   }
   get '/mypage' => 'users#mypage'
   resources :rooms do
-    resources :reservations
+    resources :reservations do
+      member do
+        post 'confirm' => 'reservations#confirm'
+      end
+    end
   end
   post 'rooms/:room_id/reservations' => 'reservations#create'
   get '/rooms/:room_id/reservations/:id/edit' => 'reservations#edit'

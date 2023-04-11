@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.where(user_id: current_user.id).includes(:user).order("created_at DESC")
-    @user = current_user.id
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -23,8 +23,9 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.new
     @room = Room.find(params[:id])
-    @user = @room.user
+    @user = User.find(current_user.id)
   end
 
   def edit
