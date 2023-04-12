@@ -8,33 +8,34 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:room_id])
     @reservation = Reservation.new
     @user = current_user
-
   end
 
-  def back
-    @reservation = Reservation.new(@attr)
-    render "new"
-  end
-
-  def create
-    @room = Room.find(params[:room_id])
+  def confirm
+    @reservation = Reservation.new(reservation_params) #情報の入ったパラメータを渡す
+    @room = @reservation.room
     @user = current_user
-    @reservation = Reservation.new(reservation_params)
-    if @reservation.save
-      flash[:notice] = "予約が完了しました"
-      redirect_to :room_reservations
-    else
-      flash.now[:alert] = "予約できませんでした"
-      render "new"
+    if @reservation.invalid?
+      render :new
     end
   end
 
-  def complete
-    Reservation.create!(@attr)
+  def create
+    @reservation = Reservation.new(reservation_params) #情報の入ったパラメータを渡す
+    @room = Room.find(params[:room_id])
+    @user = current_user
+    if params[:back] || !@reservation.save #戻るを押すor保存できなかった時
+      render :new and return
+    elsif @reservation.save
+      flash[:notice] = "予約が完了しました" 
+      redirect_to :room_reservations
+    else
+      flash.now[:alert] = "予約できませんでした" #ここ不要？
+      render :new
+    end
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(id: params[:id])
     @reservation.user_id = current_user.id
     @rooms = @reservation.rooms.includes(:user)
     @room =  Room.find(params[:id])
@@ -65,7 +66,7 @@ class ReservationsController < ApplicationController
   end
 
   private
-  def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out, :how_many_people, :user_id, :room_id)
-  end
+    def reservation_params
+      params.require(:reservation).permit(:check_in, :check_out, :how_many_people, :user_id, :room_id)
+    end
 end

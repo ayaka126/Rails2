@@ -6,7 +6,7 @@
 
 <%= render "shared/error", obj: @reservation %>
 
-<%= form_with model: [@room, @reservation] do |f| %>
+<%= form_with model: [@room, @reservation], method: :post, url: reservation_confirm_path, local: true do |f| %>
 	<div class = "reservation">
 		<p><%= f.label :check_in , "チェックイン日" %></p>
 		<p><%= f.date_field :check_in %></p>
@@ -18,7 +18,7 @@
 	<div class = "hidden">
 		<%= f.hidden_field :user_id, value: @user.id %>
 		<%= f.hidden_field :room_id, value: @room.id %>
+		<%= f.hidden_field :room.name %>
 	</div>
-
-	<%= f.submit "予約する" %>
+	<%= f.submit "予約確認へ" %>
 <% end %>

@@ -1,6 +1,8 @@
 <h3>予約内容の確認</h3>
 
 <dl>
+	<dt>施設名</dt>
+	<dd><%= @reservation.room.name %></dd>
 	<dt>チェックイン日</dt>
 	<dd><%= @reservation.check_in %></dd>
 	<dt>チェックアウト日</dt>
@@ -12,17 +14,11 @@
     <dt>支払い金額</dt>
 	<dd><%= @reservation.total_price %></dd>
 </dl>
-
-<%= form_for @reservation, method: :post, url: reservations_back_path do |f| %>
+<%= form_with model: [@room, @reservation] do |f| %>
 	<%= f.hidden_field :check_in %>
 	<%= f.hidden_field :check_out %>
 	<%= f.hidden_field :how_many_people %>
-	<%= f.submit "入力画面に戻る" %>
-<% end %>
-
-<%= form_for @reservation, method: :post, url: reservations_complete_path do |f| %>
-	<%= f.hidden_field :check_in %>
-	<%= f.hidden_field :check_out %>
-	<%= f.hidden_field :how_many_people %>
-	<%= f.submit "送信する" %>
+	<%= f.hidden_field :room_id %>
+	<%= f.hidden_field :user_id %>
+	<%= f.submit "予約を確定する" %>
 <% end %>
