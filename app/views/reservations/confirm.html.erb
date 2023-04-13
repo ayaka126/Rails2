@@ -4,9 +4,9 @@
 	<dt>施設名</dt>
 	<dd><%= @reservation.room.name %></dd>
 	<dt>チェックイン日</dt>
-	<dd><%= @reservation.check_in %></dd>
+	<dd><%= @reservation.check_in.strftime("%Y/%m/%d") %></dd>
 	<dt>チェックアウト日</dt>
-	<dd><%= @reservation.check_out %></dd>
+	<dd><%= @reservation.check_out.strftime("%Y/%m/%d") %></dd>
 	<dt>人数</dt>
 	<dd><%= @reservation.how_many_people %></dd>
     <dt>宿泊日数</dt>

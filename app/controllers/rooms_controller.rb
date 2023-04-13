@@ -23,12 +23,13 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.new
+    @reservation = Reservation.new #追加
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
   end
 
   def edit
+    @user = current_user
     @room = Room.find(params[:id])
   end
   

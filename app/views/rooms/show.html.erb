@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <th><%= f.label :img ,"施設画像" %></th>
-            <td><%= @room.img %></td>
+            <td><%= image_tag @room.img.url %></td>
         </tr>
     </table>
     <div class = "hidden">
