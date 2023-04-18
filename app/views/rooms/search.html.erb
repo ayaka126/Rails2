@@ -1,0 +1,18 @@
+<div class = "search-container">
+    <h3>検索結果一覧</h3>
+        <div class = "search-results">
+            <% if @results.present? %>
+                <h4>検索結果：<%= @results.count %>件</h4>
+                <% @results.each do |room| %>
+                    <%= room.name %>
+                    <%= image_tag room.img.url %>
+                    <%= room.address %>
+                    <%= room.introduction.truncate(30) %>
+                    <%= room.price %>
+                    <%= link_to "詳細はこちら", room_path(room.id) %>
+                <% end %>
+            <% else %>
+                <h4>検索結果0件</h4>
+            <% end %>
+        </div>
+</div>

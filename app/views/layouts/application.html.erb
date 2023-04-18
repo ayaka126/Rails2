@@ -15,12 +15,23 @@
     <a class = "logo" href = "/">Potepan Share</a>
     <ul class = "login_signup">
       <% if user_signed_in? %>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= current_user.name %></li>
+          <div class = "dropdown">
+            <ul class = "dropdown-menu">
+              <li><%= link_to "施設の新規登録",  new_room_path %></li>
+              <li><%= link_to "予約済み施設一覧", room_reservations_path(current_user.reservations) %></li>
+              <li><%= link_to "登録済み施設一覧", rooms_path(current_user.rooms) %></li>
+              <li><%= link_to "アカウント設定", mypage_path(current_user) %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        <li><%= image_tag current_user.avatar.url, class: "avatar" %></li>
       <% else %>
         <li><%= link_to "新規登録", new_user_registration_path %></li>
         <li><%= link_to "ログイン", new_user_session_path %></li>
       <% end %>
     </ul>
+    <script src = "header.js"></script>
     </header>
 
     <%= yield %>

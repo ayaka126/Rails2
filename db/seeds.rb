@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Room.create(name: 'さくらんぼホテル', address: '新宿', introduction: '無料Wi-Fi完備です', price: '9000')
+Room.create(name: 'みかんホテル', address: '中野', introduction: 'バックパッカーに人気！', price: '5000')
+Room.create(name: 'いちごホテル', address: '八王子', introduction: '自然に囲まれたホテルです', price: '15000')
+Room.create(name: 'ぶどうホテル', address: '秩父', introduction: 'お花見に便利な立地です', price: '10000')
+Room.create(name: 'ばななホテル', address: '新宿', introduction: '都庁近くです', price: '15000')
+Room.create(name: 'パイナップルホテル', address: '池袋', introduction: '都心へのアクセス抜群！', price: '13000')
+Room.create(name: 'キウイホテル', address: '新宿', introduction: '子連れ歓迎です', price: '9000')

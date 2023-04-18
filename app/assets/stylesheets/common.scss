@@ -22,13 +22,20 @@ a{
 .login_signup{
     display: flex;
     margin: 0 0 0 auto;
+    align-items: center;
+}
+
+.avatar{
+    width: 50px;
+    border-radius: 50%;
+    line-height: 80px;
 }
 
 li{
     list-style: none;
     margin: 0 7px;
+    line-height: 80px;
 }
-
 footer{
     height: 200px;
     background-color: #1c1d3b;

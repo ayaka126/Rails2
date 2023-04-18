@@ -1,9 +1,10 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_q, only: [:index, :show]
 
   def index
+    @user = current_user
     @rooms = Room.where(user_id: current_user.id).includes(:user).order("created_at DESC")
-    @user = User.find(current_user.id)
   end
 
   def new
@@ -23,7 +24,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.new #追加
+    @reservation = Reservation.new
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
   end
@@ -51,8 +52,20 @@ class RoomsController < ApplicationController
     redirect_to :rooms
   end
 
+  def search
+    @rooms = Room.includes(:user).order('created_at DESC')
+    @q = Room.ransack(params[:q])
+    @results = @q.result(distinct: true).page(params[:page]).per(8).order('created_at DESC')
+  end
+
   private
+
   def room_params
     params.require(:room).permit(:name, :introduction, :price, :address, :user_id, :img, :img_cache, :reservation_id)
+  end
+
+  def set_q
+      @q = Room.ransack(params[:q])
+      @search_room = @q.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(4)
   end
 end

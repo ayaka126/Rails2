@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'top#index'
+  get 'rooms/search'
 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
