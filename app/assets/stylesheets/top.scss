@@ -1,3 +1,6 @@
+.top-page{
+    height: 1600px;
+}
 .first_view{
     height: 800px;
     font-size: 80px;
@@ -16,6 +19,38 @@
 .to_index a{
     color: white;
 }
+
 .label{
     font-size: 20px;
+}
+.search-btn{
+    font-size: 20px;
+    background-color: #EEEFFF;
+    padding: 10px 100px;
+    text-align: center;
+}
+
+section{
+    list-style: none;
+    display: flex;
+    margin: 100px 5px;
+}
+
+.area-container h4{
+    color: black;
+    font-size: 40px;
+    border-bottom: 3px solid orange;
+    margin-left: 20px;
+}
+
+.areas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.areas p{
+    font-size: 35px;
+    color: black;
+    margin: 0;
+    text-align: center;
 }
