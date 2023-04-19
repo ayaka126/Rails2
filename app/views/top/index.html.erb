@@ -5,10 +5,9 @@
     まだ体験したことのない<br>
     旅をしよう
     <%= search_form_for @q, url: rooms_search_path do |f| %>
-        <div class = "serch-wrapper">
+        <div class = "search-box">
             <div class="search-content">
-                <%= f.label :name_or_address_or_introduction_cont, 'キーワード検索', class: 'label' %>
-                <%= f.search_field :name_or_address_or_introduction_cont, placeholder: 'キーワードを入力', class:"search-form-control" %>
+                <%= f.search_field :name_or_introduction_cont, placeholder: 'キーワードを入力', class:"search-form-control" %>
             </div>
             <div class="search-content">
                 <%= f.submit 'この条件で検索する', class:"search-btn" %>

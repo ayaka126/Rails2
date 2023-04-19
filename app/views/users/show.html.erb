@@ -1,11 +1,15 @@
-<% if user_signed_in? %>
-    <h1><%= @current_user.name %>のマイページ</h1>
-<% else %>
-    <h2>ユーザーページ</h2>
- <% end %>
- 
-<p><%= image_tag @user.avatar.url %></p>
-<p>名前: <%= @current_user.name %></p>
-<p>メールアドレス: <%= @current_user.email %></p>
-<p>パスワード：******</p>
-<p>紹介文: <%= @current_user.introduction %></p>
+<div class = "setting">
+    <div class = "setting-side">
+        <h1>設定</h1>
+        <div class = "link-box">
+            <p><%= link_to "アカウント", user_path(current_user) %></p>
+            <p><%= link_to "プロフィール",users_mypage_path(current_user) %></p>
+        </div>
+    </div>
+    <div class = "setting-contents">
+        <h2>アカウント情報</h2>
+        <p class = "edit-link"><%= link_to "編集", [:edit_user_registration] %></p>
+            <p>メールアドレス<%= @user.email %></p>
+            <p>パスワード<span>********</span></p>
+    </div>
+</div>

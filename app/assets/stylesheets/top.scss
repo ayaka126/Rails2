@@ -20,20 +20,44 @@
     color: white;
 }
 
+.search-box{
+    background-color: #EEEFFF;
+    border: solid 2px white;
+    border-radius: 10px;
+    width: 700px;
+    margin: 20px auto;
+    opacity: 0.5;
+}
+
 .label{
     font-size: 20px;
+    color: black;
+}
+
+.search-form-control{
+    font-size: 20px;
+    width: 80%;
+    height: 60px;
+    background-color: rgba(255,255,255,0.5);
+
 }
 .search-btn{
     font-size: 20px;
-    background-color: #EEEFFF;
-    padding: 10px 100px;
+    background-color: rgba(255,119,87,0.5);
     text-align: center;
+    width: 80%;
+    height: 60px;
+    margin-bottom: 20px;
 }
 
 section{
     list-style: none;
     display: flex;
-    margin: 100px 5px;
+    margin: 70px 5px;
+}
+
+.search-content{
+    margin: 0 auto;
 }
 
 .area-container h4{

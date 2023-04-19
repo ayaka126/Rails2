@@ -3,9 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:mypage]
 
   def mypage
-    redirect_to user_path(current_user)
     @user = current_user
-    @avatar = @user.avatar
+    @avatar = current_user.avatar
   end
 
   def index
@@ -17,8 +16,22 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @avatar = current_user.avatar
-    
-    
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:notice] = "プロフィールを更新しました"
+      redirect_to :users_mypage
+    else
+      flash.now[:notice] = "プロフィールを更新できませんでした"
+      render "edit_user"
+    end
+
   end
 
 

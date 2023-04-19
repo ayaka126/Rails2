@@ -30,7 +30,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約が完了しました" 
       redirect_to :room_reservations
     else
-      flash.now[:alert] = "予約できませんでした" #ここ不要？
+      flash.now[:notice] = "予約できませんでした" #ここ不要？
       render :new
     end
   end
@@ -53,7 +53,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約を更新しました"
       redirect_to :room_reservations
     else
-      flash.now[:alert] = "予約が更新できませんでした"
+      flash.now[:notice] = "予約が更新できませんでした"
       render "edit"
     end
   end

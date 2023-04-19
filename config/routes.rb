@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
   }
-  get '/mypage' => 'users#mypage'
+  get 'users/mypage' => 'users#mypage'
   resources :rooms do
     resources :reservations
   end

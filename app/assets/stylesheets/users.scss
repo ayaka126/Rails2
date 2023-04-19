@@ -1,3 +1,49 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.setting{
+    display: flex;
+}
+
+h1{
+    text-align: left;
+    margin: 10px 20px;
+}
+.setting-side{
+    width: 15%;
+    text-align: left;
+    margin: 10px 20px;
+    padding-left: 10px;
+}
+
+.setting-contents{
+    width: 80%;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.link-box{
+    border: solid 1px gray;
+    margin: 5px 10px;
+}
+
+.link-box p{
+    padding-left: 10px;
+}
+
+h2{
+    border-bottom: 1px solid gray;
+    font-size: 30px;
+}
+
+.edit-link{
+    text-align: right;
+}
+
+.account-information-label{
+    width: 25%;
+    text-align: left;
+}
+
+.account-information-value{
+    width: 75%;
+    margin-left: 50px;
+}
