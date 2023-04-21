@@ -12,7 +12,7 @@
     <dt>宿泊日数</dt>
 	<dd><%= @reservation.how_many_days %></dd> <!--宿泊日数と金額の計算式-->
     <dt>支払い金額</dt>
-	<dd><%= @reservation.total_price %></dd>
+	<dd>¥<%= @reservation.total_price %></dd>
 </dl>
 <%= form_with model: [@room, @reservation] do |f| %>
 	<%= f.hidden_field :check_in %>

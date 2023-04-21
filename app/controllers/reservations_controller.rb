@@ -2,7 +2,6 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @reservations = Reservation.where(user_id: current_user.id).includes(:user).order("created_at DESC")
-    @room = current_user.reservation.room
   end
   
   def new

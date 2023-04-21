@@ -21,12 +21,12 @@
 }
 
 .search-box{
-    background-color: #EEEFFF;
+    background-color: white;
     border: solid 2px white;
     border-radius: 10px;
     width: 700px;
     margin: 20px auto;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .label{
@@ -50,10 +50,10 @@
     margin-bottom: 20px;
 }
 
-section{
+.recommend-area{
     list-style: none;
     display: flex;
-    margin: 70px 5px;
+    margin: 100px 20px;
 }
 
 .search-content{
@@ -70,6 +70,7 @@ section{
 .areas{
     display: flex;
     justify-content: space-between;
+    margin-top: 60px;
 }
 
 .areas p{
@@ -77,4 +78,55 @@ section{
     color: black;
     margin: 0;
     text-align: center;
+}
+
+.partial-search-wrapper{
+    background-color: #DCDCDC;
+    padding: 30px 100px;
+    display: flex;
+    font-size: 18px;
+    
+}
+
+.partial-search-content{
+    margin: 20px;
+}
+
+.search-container h3{
+    margin: 20px;
+}
+
+.search-results h4{
+    margin: 20px;
+}
+
+.room-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.room-list{
+    flex-wrap: wrap;
+    grid-gap: 32px;
+    gap: 32px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.room-list li{
+    display: block;
+}
+
+.room-image{
+    margin: 5px;
+}
+
+.room-name{
+    font-size: 30px;
+}
+.price{
+    font-size: 40px;
+    font-weight: bold;
+    color: #FF8856;
 }
