@@ -20,18 +20,21 @@
     color: white;
 }
 
+a{
+    text-decoration: none;
+}
+
 .search-box{
     background-color: white;
     border: solid 2px white;
     border-radius: 10px;
     width: 700px;
+    height: 300px;
     margin: 20px auto;
     opacity: 0.7;
 }
-
-.label{
-    font-size: 20px;
-    color: black;
+.search-content{
+    margin-bottom: 20px;
 }
 
 .search-form-control{
@@ -39,21 +42,22 @@
     width: 80%;
     height: 60px;
     background-color: rgba(255,255,255,0.5);
-
+    border-radius: 3px;
 }
+
 .search-btn{
     font-size: 20px;
-    background-color: rgba(255,119,87,0.5);
+    background-color: orange;
+    border-radius: 3px;
     text-align: center;
     width: 80%;
     height: 60px;
-    margin-bottom: 20px;
 }
 
 .recommend-area{
     list-style: none;
     display: flex;
-    margin: 100px 20px;
+    margin: 80px 20px;
 }
 
 .search-content{

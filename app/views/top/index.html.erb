@@ -6,7 +6,7 @@
     旅をしよう
     <%= search_form_for @q, url: rooms_search_path do |f| %>
         <div class = "search-box">
-            <div class="search-content">
+            <div class="search-field">
                 <%= f.search_field :name_or_introduction_cont, placeholder: 'キーワードを入力', class:"search-form-control" %>
             </div>
             <div class="search-content">

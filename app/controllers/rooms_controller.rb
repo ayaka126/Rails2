@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
       flash[:notice] = "施設を登録しました"
       redirect_to :rooms
     else
-      flash.now[:notice] = "施設を登録できませんでした"
+      flash.now[:alert] = "施設を登録できませんでした"
       render "new"
     end
   end
@@ -38,9 +38,9 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if @room.update(room_params)
       flash[:notice] = "施設情報を更新しました"
-      redirect_to user_url
+      redirect_to rooms_url
     else
-      flash.now[:notice] = "施設情報を更新できませんでした"
+      flash.now[:alert] = "施設情報を更新できませんでした"
       render "edit"
     end
   end

@@ -1,34 +1,27 @@
-<h3>プロフィールの編集</h3>
-
-<% if flash[:notice] %>
-    <p class = "notice"><%= flash[:notice] %></p>
-<% end%>
-
 <%= render "shared/error", obj: @user %>
-
+<div class = "box">
+<div class = "box-inner">
 <%= form_with model: @user, url: user_path do |f| %>
-    <table>
-        <tr>
-            <td><%= f.hidden_field :user_id, value: current_user.id %></td>
-        </tr>
-        <tr>
-            <th><%= f.label :avatar ,"アイコン画像" %></th>
-            <td><%= f.file_field :avatar %>
-                <%= f.hidden_field :avatar_cache %></td>
-        </tr>
-        <tr>
-            <th><%= f.label :name ,"名前" %></th>
-            <td><%= f.text_field :name %></td>
-        </tr>
+<h2>プロフィールの編集</h2>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class = "profile-avatar">
+            <p><%= f.label :avatar ,"アイコン画像" %></p>
+            <p><%= f.file_field :avatar %></p>
+            <%= f.hidden_field :avatar_cache %>
+        </div>
+        <div class = "profile-name">
+            <p><%= f.label :name ,"名前" %></p>
+            <p><%= f.text_field :name %></p>
+        </div>
 
-        <tr>
-            <th><%= f.label :introduction ,"自己紹介" %></th>
-            <td><%= f.text_field :introduction %></td>
-        </tr>
-    </table>
-
-    <div class = "buttons">
-        <%= link_to "キャンセル", :user %>
-        <%= f.submit "編集を保存する" %>
+        <div class = "profile-introduction">
+            <p><%= f.label :introduction ,"自己紹介" %></p>
+            <p><%= f.text_field :introduction %></p>
+        </div>
+    <div class = "box-buttons">
+        <p><%= f.submit "編集を保存する" %></p>
+        <p><%= link_to "キャンセル", :user %></p>
+    </div>
+    </div>
     </div>
 <% end %>

@@ -10,26 +10,20 @@ ja:
         email: メールアドレス
         password: パスワード
         introduction: 紹介文
-
-    attributes:
       room:
         name: 施設名
         introduction: 施設紹介
         price: 宿泊料金(/日)
         address: 住所
-
-    attributes:
       reservation:
         check_in: チェックイン日
         check_out: チェックアウト日
         how_many_days: 宿泊日数
         how_many_people: 宿泊人数
         total_price: 合計料金
-
   attributes:
     created_at: 作成日
     updated_at: 更新日
-
   errors:
     messages:
       carrierwave_processing_error: 処理できませんでした

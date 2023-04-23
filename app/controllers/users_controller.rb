@@ -28,8 +28,8 @@ class UsersController < ApplicationController
       flash[:notice] = "プロフィールを更新しました"
       redirect_to :users_mypage
     else
-      flash.now[:notice] = "プロフィールを更新できませんでした"
-      render "edit_user"
+      flash.now[:alert] = "プロフィールを更新できませんでした"
+      render :users_mypage
     end
 
   end
