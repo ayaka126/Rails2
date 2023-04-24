@@ -1,5 +1,5 @@
+<%= render "shared/error", obj: @user %>
 <div class ="box">
-  <%= render "shared/error", obj: @user %>
   <div class = "box-inner">
     <h2>アカウント編集</h2>
       <%= form_with model: @user, url: user_registration_path do |f| %>
