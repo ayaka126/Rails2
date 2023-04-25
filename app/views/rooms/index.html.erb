@@ -20,7 +20,7 @@
                 <td><%= number_to_currency(room.price, :unit => "¥", :format => "%u%n") %></td>
                 <td><%= room.created_at.to_s(:datetime_jp) %></td>
                 <td><%= link_to"編集", edit_room_path(room.id) %></td>
-                <td><%= link_to"削除", room_path(room.id), method: :delete, data:{confirm:"施設を削除しますか？"} %></td>
+                <td><%= button_to"削除", room_path(room.id), method: :delete, data:{confirm:"施設を削除しますか？"} %></td>
             </tr>
             <% end %>
         </tbody>
