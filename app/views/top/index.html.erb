@@ -1,0 +1,30 @@
+<div class = "top-page">
+<div class = "first_view">
+    <div class = "container">
+    Potepan Shareで<br>
+    まだ体験したことのない<br>
+    旅をしよう
+    <%= search_form_for @q, url: rooms_search_path do |f| %>
+        <div class = "search-box">
+            <div class="search-field">
+                <%= f.search_field :name_or_introduction_cont, placeholder: 'キーワードを入力', class:"search-form-control" %>
+            </div>
+            <div class="search-content">
+                <%= f.submit 'この条件で検索する', class:"search-btn" %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+    <section class = "recommend-area">
+        <div class = "area-container">
+        <h4>おすすめのエリア</h4>
+            <ul class = "areas">
+                <li><%= link_to image_tag('tokyo',:alt => "東京", :style => "border-radius: 10%", :size => "300x450", :class => "tokyo-link"),rooms_search_path(q:{address_cont:"東京"}) %><p>東京/Tokyo</p></li>
+                <li><%= link_to image_tag('osaka',:alt => "大阪", :style => "border-radius: 10%", :size => "300x450"),rooms_search_path(q:{address_cont:"大阪"}) %><p>大阪/Osaka</p></li>
+                <li><%= link_to image_tag('kyoto',:alt => "京都", :style => "border-radius: 10%", :size => "300x450"),rooms_search_path(q:{address_cont:"京都"}) %><p>京都/Kyoto</p></li>
+                <li><%= link_to image_tag('sapporo',:alt => "札幌", :style => "border-radius: 10%", :size => "300x450"),rooms_search_path(q:{address_cont:"札幌"}) %><p>札幌/Sappro</p></li>
+            </ul>
+        </div>
+    </section>
+</div>
+</div>

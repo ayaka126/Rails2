@@ -1,0 +1,24 @@
+<p><%= render "shared/search"%></p>
+
+<div class = "search-container">
+    <h3>検索結果一覧</h3>
+        <div class = "search-results">
+            <% if @results.present? %>
+                <h4>検索結果：<%= @results.count %>件</h4>
+                    <div class = "room-container">
+                        <% @results.each do |room| %>
+                        <ul class = "room-list">
+                            <li class = "image"><%= image_tag room.img.url,size: "350x250" %></li>
+                            <li class = "room-name"><%= room.name %></li>
+                            <li><%= room.address %></>
+                            <li><%= room.introduction.truncate(30) %></li>
+                            <li class = "price"><%= number_to_currency(room.price, :unit => "¥", :format => "%u%n") %></li>
+                            <li><%= link_to "詳細はこちら", room_path(room.id),class:"btn btn-warning" %><td>
+                        </ul>
+                        <% end %>
+                    </div>
+            <% else %>
+                <h4>検索結果0件</h4>
+            <% end %>
+        </div>
+</div>

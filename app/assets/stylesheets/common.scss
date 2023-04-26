@@ -1,0 +1,58 @@
+.header{
+    background-color: #1c1d3b;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+header a{
+    color :white;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 40px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.login_signup{
+    display: flex;
+    margin: 0 0 0 auto;
+    align-items: center;
+}
+
+.avatar{
+    width: 50px;
+    border-radius: 50%;
+    line-height: 80px;
+    margin-right: 20px;
+}
+
+li{
+    list-style: none;
+    margin: 0 7px;
+    line-height: 80px;
+}
+footer{
+    height: 200px;
+    background-color: #1c1d3b;
+    color: white;
+    padding: 60px 30px;
+}
+
+.footer_logo{
+    font-size: 40px;
+}
+.copyright{
+    font-size: 5px;
+}
+
+.partial{
+    background-color: lavender;
+}

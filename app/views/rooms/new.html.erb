@@ -1,0 +1,34 @@
+<%= render "shared/error", obj: @room %>
+<div class = "box">
+    <div class = "box-inner">
+        <h2>施設の新規登録</h2>
+        <%= form_with model: @room do |f| %>
+        <div class = "field">
+            <%= f.label :name ,"施設名" %>
+            <%= f.text_field :name %>
+        </div>
+        <div class = "field">
+            <%= f.label :introduction ,"施設詳細" %>
+            <%= f.text_field :introduction %>
+        </div>
+        <div class = "field">
+            <%= f.label :price ,"料金" %>
+            <%= f.text_field :price %>
+        </div>
+        <div class = "field">
+            <%= f.label :address ,"住所" %>
+            <%= f.text_field :address %>
+        </div>
+        <div class = "field">
+            <%= f.label :img ,"施設画像" %>
+            <%= f.file_field :img %>
+            <%= f.hidden_field :img_cache %>
+        </div>
+        <div class = "box-buttons">
+            <%= link_to "キャンセル", :rooms %>
+            <%= f.submit "保存" %>
+        </div>
+        <% end %>
+    </div>
+</div>
+

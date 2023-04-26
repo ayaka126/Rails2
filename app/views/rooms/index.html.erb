@@ -1,0 +1,28 @@
+<h2>登録済み施設一覧</h2>
+<%= link_to "施設の新規登録" ,[:new_room]%>
+    <table>
+        <thead>
+            <tr class = "room-nav">
+                <th class = "room-image-title">画像</th>
+                <th>施設名</th>
+                <th>紹介文</th>
+                <th>料金</th>
+                <th>作成日</th>
+            </tr>
+        </thead>
+
+        <tbody class = "room-index">
+            <% @rooms.each do |room| %>
+            <tr><%= hidden_field_tag :room_id, @room_id %>
+                <td><%= image_tag room.img.url, alt: "施設画像", class: "room-image" %></td>
+                <td><%= link_to room.name , room %></td>
+                <td><%= room.introduction %></td>
+                <td><%= number_to_currency(room.price, :unit => "¥", :format => "%u%n") %></td>
+                <td><%= room.created_at.to_s(:datetime_jp) %></td>
+                <td><%= link_to"編集", edit_room_path(room.id) %></td>
+                <td><%= button_to"削除", room_path(room.id), method: :delete, data:{confirm:"施設を削除しますか？"} %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    

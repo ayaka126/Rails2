@@ -1,0 +1,25 @@
+<div class = "setting">
+    <div class = "setting-side">
+        <h1>設定</h1>
+            <div class = "link-box">
+                <p><%= link_to "アカウント", user_path(current_user) %></p>
+                <p><%= link_to "プロフィール",users_mypage_path(current_user) %></p>
+            </div>
+    </div>
+
+    <div class = "setting-contents">
+        <h2>プロフィール</h2>
+        <p class = "edit-link"><%= link_to "編集", edit_user_path(current_user) %></p>
+            <div class = "account-informations">
+                <div class = "account-information">アイコン画像
+                    <p class = "account-information-value"><%= image_tag @user.avatar.url %></p>
+                </div>
+                <div class = "account-information">名前
+                    <p class = "account-information-value"><%= @current_user.name %></p>
+                </div>
+                <div class = "account-information">紹介文
+                    <p class = "account-information-value"><%= @current_user.introduction %></p>
+                </div>
+            </div>
+    </div>
+</div>

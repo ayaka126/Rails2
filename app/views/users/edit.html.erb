@@ -1,0 +1,27 @@
+<%= render "shared/error", obj: @user %>
+<div class = "box">
+<div class = "box-inner">
+<%= form_with model: @user, url: user_path do |f| %>
+<h2>プロフィールの編集</h2>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class = "profile-avatar">
+            <p><%= f.label :avatar ,"アイコン画像" %></p>
+            <p><%= f.file_field :avatar %></p>
+            <%= f.hidden_field :avatar_cache %>
+        </div>
+        <div class = "profile-name">
+            <p><%= f.label :name ,"名前" %></p>
+            <p><%= f.text_field :name %></p>
+        </div>
+
+        <div class = "profile-introduction">
+            <p><%= f.label :introduction ,"自己紹介" %></p>
+            <p><%= f.text_field :introduction %></p>
+        </div>
+    <div class = "box-buttons">
+        <p><%= f.submit "編集を保存する" %></p>
+        <p><%= link_to "戻る", :back %></p>
+    </div>
+    </div>
+    </div>
+<% end %>

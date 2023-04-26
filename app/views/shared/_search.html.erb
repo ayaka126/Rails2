@@ -1,0 +1,13 @@
+    <%= search_form_for @q, url: rooms_search_path do |f| %>
+        <div class = "partial-search-wrapper">
+            <div class="partial-search-content">
+                <%= f.label :name_or_introduction_cont, 'フリーワード検索', class: 'freeword-search' %>
+                <%= f.search_field :name_or_introduction_cont, placeholder: 'キーワード名を入力', class:"partial-search-form-control" %>
+                <%= f.label :address_cont, 'エリア検索', class: 'area_search'%>
+                <%= f.search_field :address_cont, placeholder: 'エリア名を入力', class:'partial-search-form-control'%>
+            </div>
+            <div class="partial-search-content">
+                <%= f.submit 'この条件で検索する', class:"partial-search-btn" %>
+            </div>
+        </div>
+    <% end %>

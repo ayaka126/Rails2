@@ -1,0 +1,29 @@
+<h3>予約済み施設一覧</h3>
+    <table>
+        <thead>
+            <tr class = "reservation-index-title">
+                <th class = "reservation-room-image-title">画像</th>
+                <th>施設名</th>
+                <th>紹介文</th>
+                <th>合計料金</th>
+                <th>チェックイン</th>
+                <th>チェックアウト</th>
+                <th>予約確定日時</th>
+            </tr>
+        </thead>
+
+        <tbody class = "reservation-index">
+            <% @reservations.each do |reservation| %>
+            <tr>
+                <td><%= image_tag reservation.room.img.url, alt: "施設画像", class: "reservation-room-image" %></td>
+                <td><%= reservation.room.name %></td>
+                <td><%= reservation.room.introduction %></td>
+                <td><%= number_to_currency(reservation.total_price, :unit => "¥", :format => "%u%n") %></td>
+                <td><%= reservation.check_in.strftime("%Y/%m/%d") %>
+                <td><%= reservation.check_out.strftime("%Y/%m/%d") %>
+                <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    

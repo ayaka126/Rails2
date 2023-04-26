@@ -1,0 +1,33 @@
+<%= render "shared/error", obj: @user %>
+<div class ="box">
+  <div class = "box-inner">
+    <h2>アカウント編集</h2>
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+        <div class = "account-edit">
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class = "field">
+          <%= f.label :email ,"メールアドレス" %>
+          <%= f.text_field :email %>
+        </div>
+        <div class = "field">
+          <%= f.label :password %> <i>(変更する場合のみ)</i>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class = "field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+        <div class = "field">
+          <%= f.label :current_password %> <i>(変更を保存するためにご入力ください)</i>
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+      </div>
+    <div class = "box-buttons">
+        <%= f.submit "編集を保存する" %>
+    </div>
+<% end %>
+<div class = "account-link">
+<%= link_to "戻る", :back %>
+</div>
+</div>
+</div>
